@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-image: url(https://img.freepik.com/fotos-premium/familia-riendo-formando-grupo-contra-cielo_107420-26292.jpg?w=2000);
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+}
+
+header {
+    background-color: #00337C;
+    height: 40px;
+    width: calc(100%-10%);
+    text-align: left;
+    color: rgb(255, 255, 255);
+    font-family: Arial, sans-serif;
+    display: flex; 
+    align-items: center; 
+    padding: 10px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.titulo1 {
+    margin-left: 10px;
+}
+
+#content {
+    width: calc(80% - 83px);
+    min-height: 450px;
+    margin-top: 20px; 
+}
+
+.article1 {
+    color: rgb(0, 0, 0);
+    float: left;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.article1 .img-1 {
+    height: 100px; 
+    margin-left: 10px; 
+}
+
+.article2 {
+    color: black;
+    font-size: 20px;
+    clear: both;
+    margin-top: 2px;
+    margin-left: 40px;
+    
+}
+
+.article3 {
+    background-color: #87CEEB; 
+    padding: 15px; 
+    border-radius: 10px; 
+    margin-top: 20px; 
+    clear: both;
+    margin-right: 10px;
+    width: 360px;
+    text-align: center;
+}
+
+.article3-content {
+    max-width: calc(90% - 70px); 
+    font-size: 16px;
+    line-height: 1.5; 
+}
+
+footer {
+    background-color: #1C82AD;
+    color: black;
+    text-align: center;
+    height: 70px;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    line-height: 50px;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.botones-header {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.boton-iniciar,
+.boton-registrarse {
+    background-color: #1C82AD;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.boton-iniciar:hover,
+.boton-registrarse:hover {
+    background-color: #095272;
+}
+
+aside {
+    text-align: center;
+    float: right;
+    width: 200px;
+    min-height: 200px;
+    border: solid 1px black;
+    margin-right: 40px;
+    width: calc(20% - 80px); 
+}
