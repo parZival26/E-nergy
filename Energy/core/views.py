@@ -153,3 +153,23 @@ class DeleteDispositivoView(DeleteView):
     def get_success_url(self):
         casa_id = self.kwargs['casa_id']
         return reverse_lazy('detail_casa', kwargs={'pk': casa_id})
+    
+class AnalisisCasa(LoginRequiredMixin, DetailView):
+    model = Casa
+    template_name = 'core/analisis_casa.html'
+    context_object_name = 'house'
+
+    def get_queryset(self):
+        return Casa.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['valor_total'] = ecuaciones(self.kwargs['pk'])
+        return context
+
+def ecuaciones(id):
+
+    matriz = Casa.objects.values()
+    matriz = matriz[id-1]
+    valor_total = sum(matriz['valores_pagar'])/sum(matriz['valores_kwh'])
+    return round(valor_total, 2)
