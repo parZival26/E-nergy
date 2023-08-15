@@ -13,7 +13,7 @@
         {% for house in houses %}
           <li>
             <a href="{% url 'detail_casa' house.pk %}">{{ house.name }}</a>
-            <a href="{% url 'analisis_casa' house.pk %}"></a>
+            <a href="{% url 'analisis_casa' house.pk %}">Analisis</a>
             <a href="{% url 'update_casa' house.pk %}">Editar</a>
             <form method="post" action="{% url 'delete_casa' house.pk %}">
               {% csrf_token %}

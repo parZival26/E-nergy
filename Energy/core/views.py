@@ -173,8 +173,6 @@ class AnalisisCasa(LoginRequiredMixin, DetailView):
         return context
 
 def ecuaciones(id):
-
-    matriz = Casa.objects.values()
-    matriz = matriz[id-1]
+    matriz = (Casa.objects.values()).filter(id=id)[0]
     valor_total = sum(matriz['valores_pagar'])/sum(matriz['valores_kwh'])
     return round(valor_total, 2)
