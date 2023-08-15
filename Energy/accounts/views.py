@@ -9,9 +9,13 @@ def register_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()  # Guarda automáticamente el usuario con contraseña encriptada
+            user = form.save()
+
+            # Establecer el backend de autenticación
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
-            return redirect('list_casa')  # Reemplaza 'home' con la URL a la que deseas redirigir
+
+            return redirect('home')
     else:
         form = CustomUserCreationForm()
 
