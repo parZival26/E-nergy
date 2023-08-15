@@ -36,5 +36,19 @@
   </ul>
   <a href="{% url 'agregar_dispositivo' house.pk %}">Agregar Dispositivo</a>
 
+  <h3>Metas:</h3>
+  <ul>
+    {% for meta in metas %}
+      <li>
+        {{ meta.description }} - <a href="{% url 'update_meta' casa_id=house.pk pk=meta.pk %}">Editar Meta</a>
+        <form method="post" action="{% url 'delete_dispositivo' casa_id=meta.casa.id pk=meta.id %}">
+            {% csrf_token %}
+            <button type="submit">Eliminar</button>
+        </form>
+    </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'agregar_meta' house.pk %}">Crear Meta</a>
+
 
 <a href="{% url 'home' %}">Regresar a casas</a>

@@ -7,5 +7,5 @@ class CasaForm(forms.ModelForm):
         fields = ['name', 'areaCuadrada']
 
 class AgregarValoresForm(forms.Form):
-    valor_kwh = forms.FloatField()
-    valor_pagar = forms.FloatField()
+    valor_kwh = forms.IntegerField(label='Valor Kwh', min_value=0)
+    valor_pagar = forms.IntegerField(label='Valor de Factura', min_value=0)
