@@ -11,7 +11,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()  # Guarda automáticamente el usuario con contraseña encriptada
             login(request, user)
-            return redirect('home')  # Reemplaza 'home' con la URL a la que deseas redirigir
+            return redirect('list_casa')  # Reemplaza 'home' con la URL a la que deseas redirigir
     else:
         form = CustomUserCreationForm()
 

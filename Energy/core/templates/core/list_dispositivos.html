@@ -1,0 +1,10 @@
+
+<h1>Lista de Dispositivos</h1>
+
+<ul>
+  {% for dispositivo in dispositivos %}
+    <li>{{ dispositivo.name }}</li>
+  {% empty %}
+    <li>No hay dispositivos disponibles.</li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Mis Casas</h2>
+    {% if houses %}
+      <ul>
+        {% for house in houses %}
+          <li>
+            <a href="{% url 'detail_casa' house.pk %}">{{ house.name }}</a>
+            <a href="{% url 'update_casa' house.pk %}">Editar</a>
+            <form method="post" action="{% url 'delete_casa' house.pk %}">
+              {% csrf_token %}
+              <button type="submit">Eliminar</button>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No tienes casas aún.</p>
+    {% endif %}
+    
+    <a href="{% url 'crear_casa' %}">Crear Casa</a>
+</body>
+</html>
