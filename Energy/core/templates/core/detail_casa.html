@@ -2,7 +2,10 @@
 <p><strong>Name:</strong> {{ house.name }}</p>
 <p><strong>Area:</strong> {{ house.areaCuadrada }} mt²</p>
 <a href="{% url 'update_casa' house.pk %}">Edit</a>
-<a href="{% url 'delete_casa' house.pk %}">Delete</a>
+<form method="post" action="{% url 'delete_casa' house.pk %}">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+  </form>
 
 <h3>Valores KWh:</h3>
   <ul>

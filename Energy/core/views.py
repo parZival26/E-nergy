@@ -44,6 +44,11 @@ class UpdateCasas(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return Casa.objects.filter(user=self.request.user)
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Editar Casa'
+        return context
+    
 class DeleteCasas(LoginRequiredMixin, DeleteView):
     model = Casa
     template_name = 'core/delete_casa.html'  # Reemplaza con la ubicación de tu plantilla de confirmación de eliminación
