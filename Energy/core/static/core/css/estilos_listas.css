@@ -119,6 +119,21 @@ li form {
     background-color: #3b8abb; 
 }
 
+.salir_casa {
+    width: 10%;
+    padding: 8px;
+    background-color: #92c1de;
+    color: rgb(0, 0, 0);
+    font-family: monospace;
+    font-size: 15px;
+    border-radius: 5px;
+    text-decoration: none; 
+    display: inline-block; 
+    margin-top: 10px; 
+    margin-left: 2%;
+}
+
+
 footer {
     background-color: #1C82AD;
     color: black;
