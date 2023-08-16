@@ -44,10 +44,11 @@ input {
     border-radius: 4px;
 }
 
-button {
+button, .boton {
     background-color: #1C82AD;
     color: white;
     border: none;
+    margin-top: 30px;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
@@ -83,7 +84,7 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form button {
+form button{
     background-color: #1C82AD;
     color: white;
     border: none;

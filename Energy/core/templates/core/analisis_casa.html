@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Analisis</h1>
   <section class="contenido_analisis">
-    <p class="nombre"><strong>Name:</strong> {{ house.name }}</p>
+    <p class="nombre"><strong>Nombre:</strong> {{ house.name }}</p>
     <section class="wats">
       <h3 class="valorwat">Valores por Watt:</h3>
         <ul>
@@ -20,6 +20,8 @@
     </section>
     <section class="botones">    
     <a class="valorhouse" href="{% url 'agregar_valores' house.pk %}">Agregar Valores</a>
+    <a class="valorhouse" href="{% url 'agregar_dispositivo' house.pk %}">Agregar Dispositivo</a>
     <a class="volvercasa" href="{% url 'home' %}">Regresar a casas</a>
     </section>  
   </section>
+{% endblock %}

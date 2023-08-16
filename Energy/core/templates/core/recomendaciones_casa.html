@@ -1,20 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
 <h1>Recomendaciones</h1>
 
 {% if house.areaCuadrada < 45 %}
-    <h1>Casa pequeña</h1>
+    <h2>Casa pequeña</h2>
 {% else %}
     {% if house.areaCuadrada >= 45 and house.areaCuadrada < 75 %}
-        <h1>Casa mediana</h1>
+        <h2>Casa mediana</h2>
     {% else %}
-        <h1>Casa grande</h1>
+        <h2>Casa grande</h2>
     {% endif %}
 {% endif %}
 <p><strong>Area:</strong> {{ house.areaCuadrada }} mt²</p>
 
-<li>Se recomienda apagar los dispositivos que no estes usando</li>
-<li>Poner en puntos estrategicos luces para bajar la cantidad de focos</li>
-<li>Evitar el uso de muchos dispositivos al mismo tiempo</li>
-<li>Bajar el uso del dispositivo: {{ Max.Maximo }}</li>
+<ul>
+    <li>Se recomienda apagar los dispositivos que no estes usando</li>
+    <li>Poner en puntos estrategicos luces para bajar la cantidad de focos</li>
+    <li>Evitar el uso de muchos dispositivos al mismo tiempo</li>
+    <li>Bajar el uso del dispositivo: {{ Max.Maximo }}</li>
+</ul>
 
-<a href="{% url 'home' %}">Regresar a casas</a>
+
+<a class="boton" href="{% url 'home' %}">Regresar a casas</a>
+
+{% endblock content %}
 

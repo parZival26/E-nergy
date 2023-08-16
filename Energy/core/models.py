@@ -10,7 +10,7 @@ class Casa(models.Model):
     name = models.CharField(max_length=100, verbose_name='Nombre de la casa')
     valores_kwh = models.JSONField(default=list)  
     valores_pagar = models.JSONField(default=list)
-    areaCuadrada = models.FloatField(null=True, blank=True, validators=[MinValueValidator(0.0)], verbose_name="Area cuadrada de la casa")
+    areaCuadrada = models.FloatField(null=True, blank=True, validators=[MinValueValidator(1.0)], verbose_name="Area cuadrada de la casa")
     dispositivos = models.ManyToManyField('Dispositivos', related_name='dispositivos')
 
     def __str__(self):
