@@ -41,7 +41,7 @@
     {% for meta in metas %}
       <li>
         {{ meta.description }} - <a href="{% url 'update_meta' casa_id=house.pk pk=meta.pk %}">Editar Meta</a>
-        <form method="post" action="{% url 'delete_dispositivo' casa_id=meta.casa.id pk=meta.id %}">
+        <form method="post" action="{% url 'delete_meta' casa_id=meta.casa.id pk=meta.id %}">
             {% csrf_token %}
             <button type="submit">Eliminar</button>
         </form>
