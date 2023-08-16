@@ -15,6 +15,7 @@
             <a href="{% url 'detail_casa' house.pk %}">{{ house.name }}</a>
             <a href="{% url 'analisis_casa' house.pk %}">Analisis</a>
             <a href="{% url 'update_casa' house.pk %}">Editar</a>
+            <a href="{% url 'recomendaciones_casa' house.pk %}">Recomendaciones</a>
             <form method="post" action="{% url 'delete_casa' house.pk %}">
               {% csrf_token %}
               <button type="submit">Eliminar</button>

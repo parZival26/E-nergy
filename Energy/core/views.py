@@ -170,11 +170,28 @@ class AnalisisCasa(LoginRequiredMixin, DetailView):
 
     def get_queryset(self):
         return Casa.objects.filter(user=self.request.user)
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['valor_total'] = ecuaciones(self.kwargs['pk'])
+        context['dispositivos'] = dispositivos_list(self.kwargs['pk'])
         return context
+    
+
+def dispositivos_list(id):
+        lista = {}
+        matriz = (Dispositivos.objects.values()).filter(casa_id=id)
+        cantidad = len(matriz)
+        if cantidad == 0:
+            lista["x"] = 'No hay Dispositivos'
+            return lista.items()
+        else:
+            for i in range(cantidad):
+                dia = matriz[i]['consumoWPerH']*matriz[i]["horasActivo"]
+                nombre = matriz[i]["name"]
+                lista[nombre] = dia
+        return lista.items()
 
 def ecuaciones(id):
     lista = []
@@ -187,7 +204,8 @@ def ecuaciones(id):
             valor = round(matriz['valores_pagar'][i]/matriz['valores_kwh'][i], 2)
             lista.append(valor)
             if i == 0:
-                pass
+                cache = valor
+                continue
             elif cache == valor:
                 lista.append("Neutro")
             elif cache < valor:
@@ -265,3 +283,25 @@ class recomendaciones_casas(LoginRequiredMixin, DetailView):
 
     def get_queryset(self):
         return Casa.objects.filter(user=self.request.user)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['dispositivos'] = Dispositivos.objects.filter(casa_id=self.kwargs['pk'])
+        context['Max'] = maxi(self.kwargs['pk'])
+        return context
+    
+
+def maxi(id):
+    lista = {}
+    matriz = (Dispositivos.objects.values()).filter(casa_id=id)
+    cantidad = len(matriz)
+    if cantidad == 0:
+        lista["Maximo"] = "No hay dispositivos"
+    else:
+        for i in range(cantidad):
+            dia = matriz[i]['consumoWPerH']*matriz[i]["horasActivo"]
+            nombre = matriz[i]["name"]
+            lista[nombre] = dia
+        maximo = max(lista)
+        lista["Maximo"] = maximo
+    return lista

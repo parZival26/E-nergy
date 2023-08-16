@@ -8,7 +8,12 @@
       <li>{{ valor_total }}</li>
     {% endfor %}
   </ul>
-
+<h3>Valores gasto de equipo por dia:</h3>
+  <ul>
+    {% for dispositivo in dispositivos %}
+      <li>{{ dispositivo.0 }}: {{ dispositivo.1 }}</li>
+    {% endfor %}
+  </ul>
 
   
 <a href="{% url 'home' %}">Regresar a casas</a>
