@@ -11,10 +11,15 @@
             <li>{{ valor_total }}</li>
           {% endfor %}
         </ul>
+        <h3>Valores gasto de equipo por dia:</h3>
+          <ul>
+            {% for dispositivo in dispositivos %}
+              <li>{{ dispositivo.0 }}: {{ dispositivo.1 }}</li>
+            {% endfor %}
+         </ul>
     </section>
     <section class="botones">    
     <a class="valorhouse" href="{% url 'agregar_valores' house.pk %}">Agregar Valores</a>
     <a class="volvercasa" href="{% url 'home' %}">Regresar a casas</a>
     </section>  
   </section>
-{% endblock content %}
