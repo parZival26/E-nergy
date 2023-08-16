@@ -177,9 +177,25 @@ class AnalisisCasa(LoginRequiredMixin, DetailView):
         return context
 
 def ecuaciones(id):
+    lista = []
     matriz = (Casa.objects.values()).filter(id=id)[0]
-    valor_total = sum(matriz['valores_pagar'])/sum(matriz['valores_kwh'])
-    return round(valor_total, 2)
+    cantidad = len(matriz["valores_pagar"])
+    if cantidad == 0:
+        lista = ["No hay datos para realizar el analisis"]
+    else:
+        for i in range(cantidad):
+            valor = round(matriz['valores_pagar'][i]/matriz['valores_kwh'][i], 2)
+            lista.append(valor)
+            if i == 0:
+                pass
+            elif cache == valor:
+                lista.append("Neutro")
+            elif cache < valor:
+                lista.append("Subio el kwh")
+            else:
+                lista.append("Bajo el kwh")
+            cache = valor
+    return lista
 
 class ListMetasView(LoginRequiredMixin, ListView):
     model = Metas
@@ -240,3 +256,12 @@ class DeleteMetaView(DeleteView):
     def get_success_url(self):
         casa_id = self.kwargs['casa_id']
         return reverse_lazy('detail_casa', kwargs={'pk': casa_id})
+    
+
+class recomendaciones_casas(LoginRequiredMixin, DetailView):
+    model = Casa
+    template_name = 'core/recomendaciones_casa.html'
+    context_object_name = 'house'
+
+    def get_queryset(self):
+        return Casa.objects.filter(user=self.request.user)
