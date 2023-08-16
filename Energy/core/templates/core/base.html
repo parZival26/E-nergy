@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}   
+<html>
+<head>
+    <title>{% block title %}Título predeterminado{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static "core/css/crear_casa.css" %}">
+</head>
+<body>
+    <header>
+        <h1 class="titulo">Energy</h1>
+    </header>
+    
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <footer>
+        Energy &copy; 2023 Medellin, Colombia
+    </footer>
+</body>
+</html>

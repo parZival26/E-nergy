@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #13005A;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    height: 40px;
+}
+
+.titulo2 {
+    margin-top: 2%;
+    margin-left: 5%;
+}
+
+.cosas {
+    background-color: #ffffff;
+    padding: 10px;
+    width: 38%;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.nombre_casa {
+    background-color: #d7dfe4;
+    color: black;
+    font-family: monospace;
+    font-size: 20px;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.nombre_analisis {
+    background-color: #60aad8;
+    color: black;
+    font-family: monospace;
+    font-size: 15px;
+    padding: 5px ;
+    border-radius: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.nombre_update {
+    background-color: #60aad8;
+    color: black;
+    font-family: monospace;
+    font-size: 15px;
+    padding: 5px ;
+    border-radius: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+li {
+    list-style-type: none;
+}
+
+li {
+    list-style-type: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li a {
+    text-decoration: none;
+    color: #126491;
+    transition: color 0.3s ease;
+}
+
+li a:hover {
+    color: #0B3D91;
+}
+
+li button {
+    background-color: #9d0c0c;
+    color: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 2px;
+}
+
+li button:hover {
+    background-color: #641007;
+}
+
+li form {
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.casa_crear {
+    width: 10%;
+    padding: 8px;
+    background-color: #92c1de;
+    color: rgb(0, 0, 0);
+    font-family: monospace;
+    font-size: 15px;
+    border-radius: 5px;
+    text-decoration: none; 
+    display: inline-block; 
+    margin-top: 10px; 
+    margin-left: 5%;
+    
+}
+
+.casa_crear:hover {
+    background-color: #3b8abb; 
+}
+
+footer {
+    background-color: #1C82AD;
+    color: black;
+    text-align: center;
+    height: 70px;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    line-height: 50px;
+}

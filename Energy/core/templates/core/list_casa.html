@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Mis Casas</h2>
-    {% if houses %}
-      <ul>
-        {% for house in houses %}
-          <li>
-            <a href="{% url 'detail_casa' house.pk %}">{{ house.name }}</a>
-            <a href="{% url 'analisis_casa' house.pk %}">Analisis</a>
-            <a href="{% url 'update_casa' house.pk %}">Editar</a>
-            <form method="post" action="{% url 'delete_casa' house.pk %}">
-              {% csrf_token %}
-              <button type="submit">Eliminar</button>
-            </form>
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>No tienes casas aún.</p>
-    {% endif %}
-   
-    <a href="{% url 'crear_casa' %}">Crear Casa</a>
-</body>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Casas</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'core/css/estilos_listas.css' %}">
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1 class="titulo1">Energy</h1>
+      </header>
+      <h2 class="titulo2">Mis Casas</h2>
+      {% if houses %}
+        <ul>
+          {% for house in houses %}
+            <li class="cosas">
+              <a class="nombre_casa" href="{% url 'detail_casa' house.pk %}">{{ house.name }}</a>
+              <a class="nombre_analisis" href="{% url 'analisis_casa' house.pk %}">Analisis</a>
+              <a class="nombre_update" href="{% url 'update_casa' house.pk %}">Editar</a>
+              <form method="post" action="{% url 'delete_casa' house.pk %}">
+                {% csrf_token %}
+                <button type="submit">Eliminar</button>
+              </form>
+            </li> 
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No tienes casas aún.</p>
+      {% endif %}
+    
+      <a class="casa_crear" href="{% url 'crear_casa' %}">Crear Casa</a>
+      <footer>
+        Energy &copy; 2023 Medellin, Colombia
+    </footer>
+      </div>
+  </body>
 </html>
