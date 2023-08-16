@@ -4,10 +4,10 @@
 {% block title %}Actualizar Casa: {{ house.name }}{% endblock %}
 
 {% block contenido %}
-<h1 class="upcasa">Actualizar Casa: {{ house.name }}</h1>
+<h1 class="upcasa">Editar {{titulo}}: {{ house.name }}</h1>
 <form class="los_inputs" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Actualizar Casa</button>
+    <button type="submit">Actualizar {{titulo}}</button>
 </form>
 {% endblock %}

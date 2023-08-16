@@ -1,0 +1,101 @@
+header {
+    background-color: #13005A;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    height: 40px;
+    width: calc(100% - 10px);
+    position: absolute;
+    top: 0;
+    left: 0; 
+    right: 0; 
+}
+
+.contenido_analisis {
+    background-color: rgb(255, 255, 255);
+    border: solid 1px black;
+    border-radius: 5px;
+    margin-top: 5%;
+    margin-left: 5%;
+    padding: 10px;
+    width: 30%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nombre {
+    border: solid 1px grey;
+    border-radius: 3px;
+    font-size: 15px;
+    font-family: monospace;
+    padding: 5px;
+    width: 70%;
+    background-color: #84ccea;
+}
+
+.wats {
+    border: solid 1px gray;
+    border-radius: 3px;
+    padding: 5px;
+    width: 80%;
+}
+
+.valorwat {
+    margin-top: 2%;
+}
+
+.botones {
+    margin-top: 4%;
+    width: 80%;
+    margin-bottom: 3%;
+}
+
+.valorhouse {
+    border: solid 1px gray;
+    border-radius: 3px;
+    background-color: rgb(232, 232, 232);
+    font-family: monospace;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: black;
+    width: 10%;
+    padding: 5px;
+}
+
+.valorhouse:hover {
+    background-color: #929292;
+    color: white;
+}
+
+.volvercasa {
+    border: solid 1px gray;
+    border-radius: 3px;
+    background-color: rgb(232, 232, 232);
+    font-family: monospace;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: black;
+    width: 10%;
+    padding: 5px;
+}
+
+.volvercasa:hover {
+    background-color: #929292;
+    color: white;
+}
+
+
+footer {
+    background-color: #1C82AD;
+    color: black;
+    text-align: center;
+    height: 70px;
+    bottom: 0;
+    width: calc(100% - 10px);
+    position: fixed; 
+    line-height: 50px;
+    left: 0; 
+    right: 0;
+}

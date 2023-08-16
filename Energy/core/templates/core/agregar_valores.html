@@ -1,16 +1,22 @@
 <!DOCTYPE html>
+{% extends "core/valoresbase.html" %}
+{% load static %}
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h2>Agregar Valores a {{ casa.name }}</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Agregar</button>
-</form>
-</body>
+<section class="bloque">
+  <body>
+      <h2 class="nomvalores">Agregar Valores a {{ casa.name }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agregar</button>
+  </form>
+  </body>
+</section>
 </html>
+{% endblock content %}
