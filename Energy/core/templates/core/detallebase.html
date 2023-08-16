@@ -9,26 +9,24 @@
     <header>
         <h1 class="titulo">Energy</h1>
     </header>
-    {% block content %}{% endblock content %}
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
     <footer>
         Energy &copy; 2023 Medellin, Colombia
     </footer>
     <script>
-        // Obtén el footer
         const footer = document.querySelector('footer');
-    
-        // Función para mostrar u ocultar el footer según la posición de desplazamiento
+
         function toggleFooter() {
             if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                footer.style.bottom = '0'; // Mostrar el footer al final de la página
+                footer.style.bottom = '0';
             } else {
-                footer.style.bottom = '-70px'; // Ocultar el footer mientras se desplaza hacia arriba
+                footer.style.bottom = '-70px';
             }
         }
-    
-        // Escucha el evento de desplazamiento
+
         window.addEventListener('scroll', toggleFooter);
     </script>
-    </body>
-    </html>
-    
+</body>
+</html>
