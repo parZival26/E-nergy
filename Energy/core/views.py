@@ -1,4 +1,8 @@
-from .models import Casa, Dispositivos
+from typing import Any, Dict
+from django.db import models
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse
+from .models import Casa, Dispositivos, Metas
 from .forms import AgregarValoresForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -73,6 +77,7 @@ class DetailCasas(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['dispositivos'] = Dispositivos.objects.filter(casa_id=self.kwargs['pk'])
+        context['metas'] = Metas.objects.filter(casa_id=self.kwargs['pk'])
         return context
     
   
@@ -119,7 +124,7 @@ class AgregarDispositivoView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = 'Agregar Dispositivo'
+        context['titulo'], context['button'] = ('Agregar Dispositivo', 'Agregar')
         return context
     
     def get_success_url(self):
@@ -144,8 +149,7 @@ class UpdateDispositivoView(UpdateView):
     def get_success_url(self):
         return reverse_lazy('detail_casa', kwargs={'pk': self.kwargs['casa_id']})
     
-    
-    
+     
 class DeleteDispositivoView(DeleteView):
     model = Dispositivos
     template_name = 'core/delete_casa.html'
@@ -173,6 +177,91 @@ class AnalisisCasa(LoginRequiredMixin, DetailView):
         return context
 
 def ecuaciones(id):
+    lista = []
     matriz = (Casa.objects.values()).filter(id=id)[0]
-    valor_total = sum(matriz['valores_pagar'])/sum(matriz['valores_kwh'])
-    return round(valor_total, 2)
+    cantidad = len(matriz["valores_pagar"])
+    if cantidad == 0:
+        lista = ["No hay datos para realizar el analisis"]
+    else:
+        for i in range(cantidad):
+            valor = round(matriz['valores_pagar'][i]/matriz['valores_kwh'][i], 2)
+            lista.append(valor)
+            if i == 0:
+                pass
+            elif cache == valor:
+                lista.append("Neutro")
+            elif cache < valor:
+                lista.append("Subio el kwh")
+            else:
+                lista.append("Bajo el kwh")
+            cache = valor
+    return lista
+
+class ListMetasView(LoginRequiredMixin, ListView):
+    model = Metas
+    template_name = 'core/list_metas.html' 
+    context_object_name = 'metas'
+    
+    def get_queryset(self):
+        print(Metas.objects.filter(casa_id=self.kwargs['casa_id']))
+        return Metas.objects.filter(casa_id=self.kwargs['casa_id'])
+    
+class AgregarMetaView(CreateView):
+    model = Metas
+    template_name = 'core/create_casa.html'
+    fields = ['description']
+
+    def form_valid(self, form):
+        casa_id = self.kwargs['casa_id']
+        casa = Casa.objects.get(pk=casa_id)
+        form.instance.casa = casa
+        return super().form_valid(form)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'], context['button']= ('Agregar Meta', "Agregar")
+        return context
+    
+    def get_success_url(self):
+        return reverse_lazy('detail_casa', kwargs={'pk': self.kwargs['casa_id']})
+    
+class UpdateMetaView(UpdateView):
+    model = Metas
+    fields = ['description']
+    template_name = 'core/update_casa.html'  
+
+    def get_queryset(self):
+        casa_id = self.kwargs['casa_id']
+        meta_id = self.kwargs['pk']  # Cambia 'dispositivo_id' a 'pk'
+        return Metas.objects.filter(casa_id=casa_id, pk=meta_id)
+
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Editar Meta'
+        return context
+    
+    def get_success_url(self):
+        return reverse_lazy('detail_casa', kwargs={'pk': self.kwargs['casa_id']})
+    
+class DeleteMetaView(DeleteView):
+    model = Metas
+    template_name = 'core/delete_casa.html'
+
+    def get_queryset(self):
+        casa_id = self.kwargs['casa_id']
+        meta_id = self.kwargs['pk']
+        return Metas.objects.filter(casa_id=casa_id, pk=meta_id)
+
+    def get_success_url(self):
+        casa_id = self.kwargs['casa_id']
+        return reverse_lazy('detail_casa', kwargs={'pk': casa_id})
+    
+
+class recomendaciones_casas(LoginRequiredMixin, DetailView):
+    model = Casa
+    template_name = 'core/recomendaciones_casa.html'
+    context_object_name = 'house'
+
+    def get_queryset(self):
+        return Casa.objects.filter(user=self.request.user)
