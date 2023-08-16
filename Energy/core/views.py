@@ -36,7 +36,7 @@ class CreateCasas(LoginRequiredMixin, CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = 'Agregar Dispositivo'
+        context['titulo'], context['button'] = ('Agregar Casa', 'Agregar')
         return context
     
 class UpdateCasas(LoginRequiredMixin, UpdateView):
@@ -50,7 +50,7 @@ class UpdateCasas(LoginRequiredMixin, UpdateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = 'Editar Casa'
+        context['titulo'] = 'Casa'
         return context
     
 class DeleteCasas(LoginRequiredMixin, DeleteView):
@@ -143,7 +143,7 @@ class UpdateDispositivoView(UpdateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = 'Editar Dispositivo'
+        context['titulo'] = 'Dispositivo'
         return context
     
     def get_success_url(self):
@@ -238,7 +238,7 @@ class UpdateMetaView(UpdateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = 'Editar Meta'
+        context['titulo'] = 'Meta'
         return context
     
     def get_success_url(self):
