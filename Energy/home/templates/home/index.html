@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load  static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{%static "home/css/style.css" %}">
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <h1 class="titulo1">Energy</h1>
+                <div class="botones-header">
+                    <a class="boton-iniciar" href="{%url "login"%}">Iniciar Sesión</a>
+                    <a class="boton-registrarse"href="{%url "register"%}">Registrarse</a>
+                </div>
+            </header>
+            <div class="clearfix"></div>
+            
+            <section id="content">
+                <article>
+                    <div class="article1">
+                        <h2 class="article">Energy</h2>
+                        <img src="https://cdn-icons-png.flaticon.com/512/18/18634.png" class="img-1">
+                    </div>
+                    <div class="article2">
+                        <h1>Por un mundo mejor</h1>
+                    </div>
+                    <div class="article3">
+                        <div class="article3-content">
+                            Sabías que en Colombia el consumo 
+                            mensual de electricidad de un hogar 
+                            promedio colombiano es de 157 kWh,
+                            que multiplicado por 13.314.305 de 
+                            hogares colombianos,
+                            se obtiene un total de 2.085.522.453 kWh 
+                            consumidos en el mes
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <div class="clearfix"></div>
+            <footer>
+                Energy &copy; 2023 Medellin, Colombia
+            </footer>
+        </div>
+    </body>
+</html>

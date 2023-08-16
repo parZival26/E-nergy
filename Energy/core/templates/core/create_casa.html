@@ -1,6 +1,24 @@
-<h1>{{ titulo }}</h1>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">{{ button}}</button>
-</form>
+<!DOCTYPE html>
+{% extends "core/base.html" %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casas</title>
+    <link rel="stylesheet" href="{% static "core/css/crear_casa.css" %}">
+</head>
+<body>
+  
+  {% block content %}
+  <h1>{{ titulo }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{{ button}}</button>
+  </form>
+  {% endblock content %}
+</body>
+</html>
+
+

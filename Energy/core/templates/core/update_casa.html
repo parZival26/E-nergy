@@ -1,6 +1,6 @@
-<h1>Actualizar Casa: {{ house.name }}</h1>
+<h1>Editar {{titulo}}: {{ house.name }}</h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Actualizar Casa</button>
+    <button type="submit">Actualizar {{titulo}}</button>
   </form>
