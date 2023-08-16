@@ -1,8 +1,9 @@
 {% extends "core/analisisbase.html" %}
 {% load static %}
 {% block content %}
-<h1>Analisis</h1>
+
   <section class="contenido_analisis">
+    <h2 class="titulo2">Analisis</h2>
     <p class="nombre"><strong>Name:</strong> {{ house.name }}</p>
     <section class="wats">
       <h3 class="valorwat">Valores por Watt:</h3>
@@ -20,6 +21,8 @@
     </section>
     <section class="botones">    
     <a class="valorhouse" href="{% url 'agregar_valores' house.pk %}">Agregar Valores</a>
+    <h3> </h3>
     <a class="volvercasa" href="{% url 'home' %}">Regresar a casas</a>
     </section>  
   </section>
+  {% endblock %}
