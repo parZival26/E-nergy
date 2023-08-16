@@ -1,6 +1,13 @@
-<h1>Editar {{titulo}}: {{ house.name }}</h1>
-  <form method="post">
+{% extends "core/upbase.html" %}
+{% load static %}
+
+{% block title %}Actualizar Casa: {{ house.name }}{% endblock %}
+
+{% block contenido %}
+<h1 class="upcasa">Editar {{titulo}}: {{ house.name }}</h1>
+<form class="los_inputs" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Actualizar {{titulo}}</button>
-  </form>
+</form>
+{% endblock %}

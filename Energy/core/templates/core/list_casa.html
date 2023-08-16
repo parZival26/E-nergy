@@ -28,11 +28,11 @@
           {% endfor %}
         </ul>
       {% else %}
-        <p>No tienes casas aún.</p>
+        <p class="sino">No tienes casas aún.</p>
       {% endif %}
     
       <a class="casa_crear" href="{% url 'crear_casa' %}">Crear Casa</a>
-      <a href="{% url 'logout' %}">Log Out</a>
+      <a class="salir_casa" href="{% url 'logout' %}">Log Out</a>
       <footer>
         Energy &copy; 2023 Medellin, Colombia
     </footer>

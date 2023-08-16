@@ -1,14 +1,20 @@
+{% extends "core/analisisbase.html" %}
+{% load static %}
+{% block content %}
 <h1>Analisis</h1>
-
-<p><strong>Name:</strong> {{ house.name }}</p>
-
-<h3>Valores por Watt:</h3>
-  <ul>
-    {% for valor_total in valor_total %}
-      <li>{{ valor_total }}</li>
-    {% endfor %}
-  </ul>
-
-
-<a href="{% url 'agregar_valores' house.pk %}">Agregar Valores</a>
-<a href="{% url 'home' %}">Regresar a casas</a>
+  <section class="contenido_analisis">
+    <p class="nombre"><strong>Name:</strong> {{ house.name }}</p>
+    <section class="wats">
+      <h3 class="valorwat">Valores por Watt:</h3>
+        <ul>
+          {% for valor_total in valor_total %}
+            <li>{{ valor_total }}</li>
+          {% endfor %}
+        </ul>
+    </section>
+    <section class="botones">    
+    <a class="valorhouse" href="{% url 'agregar_valores' house.pk %}">Agregar Valores</a>
+    <a class="volvercasa" href="{% url 'home' %}">Regresar a casas</a>
+    </section>  
+  </section>
+{% endblock content %}

@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el contenido al menos ocupe la altura de la ventana */
+    margin: 0; /* Elimina el margen por defecto del body */
+}
+
+header {
+    background-color: #13005A;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    height: 40px;
+    width: calc(100% - 10px);
+    position: absolute;
+    top: 0;
+    left: 0; 
+    right: 0; 
+}
+
+.detallecasa {
+    margin-top: 5%;
+}
+
+.bloque {
+    border: solid 1px black;
+    border-radius: 5px;
+    margin-top: 5%;
+    margin-left: 3%;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 7%;
+}
+
+/* Resto de tus estilos */
+
+footer {
+    background-color: #1C82AD;
+    color: black;
+    text-align: center;
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    bottom: -70px; /* Mueve el footer fuera de la pantalla */
+    line-height: 50px;
+    transition: bottom 0.3s ease; /* Agrega transición suave */
+}
+
+/* Resto de tus estilos */
