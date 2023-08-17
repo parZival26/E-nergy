@@ -11,7 +11,6 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
 
-            # Establecer el backend de autenticación
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
 
